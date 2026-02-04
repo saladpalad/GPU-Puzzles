@@ -25,7 +25,7 @@ void runKernel() {
     cudaMemcpy(d_A, A, size * sizeof(float), cudaMemcpyHostToDevice);
     cudaMemcpy(d_B, B, size * sizeof(float), cudaMemcpyHostToDevice);
 
-    dim3 blockDim(size, size);
+    dim3 blockDim(size+1, size+1);
 
     Broadcast<<<1, blockDim>>>(d_A, d_B, d_C, size);
 
